@@ -2,6 +2,9 @@ var fs = require('fs')
 var express = require('express');
 
 var app = express.createServer(express.logger());
+app.configure(function(){
+  app.use('/media', express.static(__dirname + '/media'));
+});
 
 app.get('/', function(request, response) {
   var filebuff = fs.readFileSync('index.html','ascii');
